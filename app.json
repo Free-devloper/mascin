@@ -1,0 +1,12 @@
+{
+  "name": "mascin",
+  "displayName": "mascin",
+  "expo": {
+    "name": "mascin",
+    "slug": "mascin",
+    "version": "1.0.0",
+    "assetBundlePatterns": [
+      "**/*"
+    ]
+  }
+}
