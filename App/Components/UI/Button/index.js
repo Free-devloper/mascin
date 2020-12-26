@@ -1,7 +1,8 @@
 import React from 'react'
-import { StyleSheet } from 'react-native';
+import { StyleSheet,Dimensions } from 'react-native';
 import {Button} from 'react-native-elements';
-
+import {theme} from '../../Theme/index'
+const SCREENWIDTH=Dimensions.get('window').width;
 function MButton(props) {
     return (
         <>  
@@ -13,7 +14,11 @@ function MButton(props) {
 export default MButton;
 const style=StyleSheet.create({
     btn:{
-        padding:20,
+        width:SCREENWIDTH-20,
+        height:44,
+        borderRadius:20,
+        backgroundColor:theme.colors.primary,
+        color:theme.colors.neutral.white
     }
 })
 

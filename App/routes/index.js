@@ -1,11 +1,13 @@
 import React from 'react'
 import {NavigationContainer} from '@react-navigation/native';
-import {createStackNavigator,} from '@react-navigation/stack';
+import {createStackNavigator, HeaderBackButton,} from '@react-navigation/stack';
 import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
 /*Screen Imports */
 import Home from './../Screens/Home';
 import Login from './../Screens/Auth/Login';
 import SignUp from '../Screens/Auth/SignUp';
+import { theme } from '../Components/Theme';
+import { Button,Text } from 'react-native';
 /*Screen Imports */
 const StackNavigation=createStackNavigator();
 const BottomTabNavigation= createBottomTabNavigator();
@@ -16,9 +18,8 @@ const BottomTabNavigation= createBottomTabNavigator();
 const AppStack=(props)=>{
     return(
         <>
-        <StackNavigation.Navigator headerMode={'none'}>
+        <StackNavigation.Navigator headerMode={'none'} initialRouteName={'Home'}>
             <StackNavigation.Screen name={"Home"} component={Home}/>
-            <StackNavigation.Screen name={"Login"} component={Login} />
         </StackNavigation.Navigator>
         </>
     )
@@ -28,8 +29,10 @@ const AppStack=(props)=>{
 const AuthStack=()=>{
     return(
         <>
-        <StackNavigation.Navigator>
-            <StackNavigation.Screen name={"SignUp"} component={SignUp} />
+        <StackNavigation.Navigator initialRouteName={'Login'} headerMode={'none'}>
+        <StackNavigation.Screen name={"Login"} component={Login} />
+        <StackNavigation.Screen name={"SignUp"} component={SignUp}
+        />
         </StackNavigation.Navigator>
         </>
     )
@@ -39,8 +42,9 @@ const AuthStack=()=>{
 function NavgationContainer(props) {
     return (
         <>
-        <NavigationContainer>
-            <AppStack {...props}/>
+        <NavigationContainer theme={theme}>
+            {props.isAuth&&<AppStack {...props}/>}
+            {!props.isAuth&&<AuthStack {...props}/>}
         </NavigationContainer>
         </>
     )
