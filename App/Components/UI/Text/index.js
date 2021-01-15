@@ -2,9 +2,9 @@ import React from 'react';
 import { StyleSheet,Text } from 'react-native';
 import { theme } from '../../Theme';
 
-export function MText(props) {
+export function MText({styles,childern}) {
     return (
-        <Text style={[style.text,props.style]}>{props.childern}</Text>
+        <Text style={[style.text,styles]}>{childern}</Text>
         
     )
 }

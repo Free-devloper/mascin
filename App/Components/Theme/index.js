@@ -1,4 +1,6 @@
+import { DefaultTheme } from '@react-navigation/native';
 export const theme={
+    ...DefaultTheme,
     fonts:{
         light:'Montserrat_300Light',
         regular:'Montserrat_400Regular',
@@ -29,7 +31,6 @@ export const theme={
         title:{
             fontFamily:'Montserrat_600SemiBold',
             fontSize:20,
-            color:'#0000'
         },
         bodyone:{
             fontFamily:'Montserrat_600SemiBold',

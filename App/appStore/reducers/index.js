@@ -1,9 +1,8 @@
 import React from 'react'
 import {combineReducers} from '@reduxjs/toolkit';
-import Authreducer from './Authreducer'
-
-export function Rootreducer(){
-    return combineReducers({
-    Auth:Authreducer
-    })
-}
+import Authreducer from './Authreducer';
+import ProductReducer from './ProductReducer';
+export const Rootreducer=combineReducers({
+    Auth:Authreducer,
+    Products:ProductReducer
+});
