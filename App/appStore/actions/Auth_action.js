@@ -40,8 +40,10 @@ export function SIGNIN(data){
                 SET_TOKEN(data).then(()=>{
                 dispatch({type:SIGNIN_SUCCESS,payload:data})
             });
+            }else if(res.data.msg==='Login Failed'){
+                dispatch({type:SIGNIN_FAIL,payload:{msg:'Username or Password is Wrong'}})
             }else{
-                dispatch({type:SIGNIN_FAIL,payload:res.data})
+                dispatch({type:SIGNIN_FAIL,payload:res.data.msg})
             }
             },
             error=>dispatch({type:SIGNIN_FAIL,payload:error.data.message})

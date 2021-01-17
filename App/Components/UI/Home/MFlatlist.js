@@ -1,5 +1,6 @@
 import React from 'react'
 import {StyleSheet,View,FlatList,} from 'react-native';
+import { W_WIDTH } from '../NativeUI';
 function MFlatlist(props) {
     return (
         <FlatList
@@ -23,11 +24,12 @@ export default MFlatlist
 const style=StyleSheet.create({
     ListHeaderComponent:{
         alignItems:'center',
+        width:W_WIDTH
     },columnWrapperStyle:{
         flex:1,
-        flexDirection:'row',
-        justifyContent:'center',
-        alignItems:'flex-start',
-        paddingHorizontal:-20
+
+    },ListFooterComponentStyle:{
+        flex:1,
+        alignItems:'center'
     }
 })

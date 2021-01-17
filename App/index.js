@@ -12,8 +12,7 @@ import { useFonts,
   Montserrat_900Black, } from '@expo-google-fonts/montserrat';
 import { connect } from 'react-redux';
 import {AutoSignIn, CHECK_TOKEN, ISAuthaction, ISNOTAUTHaction } from './appStore/actions/Auth_action.js';
-import { ThemeProvider } from '@react-navigation/native';
-import { theme } from './Components/Theme/index.js';
+import { enableScreens } from 'react-native-screens';
 import { GET_TOKEN } from './misc/misc.js';
 function App(props) {
   /*Fonts lODING */
@@ -35,6 +34,7 @@ function App(props) {
   // }
 useEffect(()=>{
   async function Check_auth(){
+    enableScreens();
     let res=await GET_TOKEN();
     if(res)
     {

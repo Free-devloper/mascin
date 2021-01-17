@@ -5,6 +5,7 @@ import {View,StyleSheet,Text} from 'react-native';
 import { TouchableWithoutFeedback } from 'react-native-gesture-handler';
 import { useTheme } from '@react-navigation/native';
 import { theme } from '../../Theme';
+import { W_WIDTH } from '../NativeUI';
 function MCard({item,index}) {
     const themes=useTheme();
     const [wished,setWished]=useState(false);
@@ -39,10 +40,9 @@ export default MCard
 
 const style=StyleSheet.create({
     containerStyle:{
-        flex:1,
+        margin:0,
     },
     wrapperStyle:{
-        padding:-10
     },
     price_text:{
         textAlign:'left',

@@ -1,6 +1,6 @@
 import React,{useEffect, useState} from 'react'
 import { Text } from 'react-native';
-import { StyleSheet,View,ActivityIndicator,Dimensions,FlatList,RefreshControl } from 'react-native';
+import { StyleSheet,View,ActivityIndicator,Dimensions,SectionList,RefreshControl } from 'react-native';
 import { connect } from 'react-redux';
 import {Image } from 'react-native-elements'
 import { theme } from '../../Components/Theme';
@@ -9,6 +9,8 @@ import { GETPRODUCTSLIST } from '../../appStore/actions/ProductAction';
 import {ScrollView, TouchableOpacity } from 'react-native-gesture-handler';
 import MCard from '../../Components/UI/Card';
 import MFlatlist from '../../Components/UI/Home/MFlatlist';
+import { S_WIDTH, W_WIDTH } from '../../Components/UI/NativeUI';
+import { SafeAreaView } from 'react-native';
 function Home(props) {
     const[loading,setLoading]=useState(true);
     const [selected_id,SetSelectedid]=useState(null)
@@ -21,7 +23,9 @@ function Home(props) {
     const render_card=(item,index)=>{
         return(
             <>
+            <View style={{flex:1,margin:1,flexDirection:'column',flexGrow:1,flexShrink:-1}}>
             <MCard  item={item} index={index}/>
+            </View>
             </>
         )
     }
@@ -46,7 +50,7 @@ function Home(props) {
         return(<>
          <Image
                 source={source}
-                style={{ width:Dimensions.get('window').width-10,height:Dimensions.get('window').width/2.1,borderRadius:10,borderTopRightRadius:0, }}
+                style={{ width:S_WIDTH-10,height:S_WIDTH/2.1,borderRadius:10,borderTopRightRadius:0,alignSelf:'flex-end' }}
                 resizeMode={mode}
                 fadeDuration={1000}
                 PlaceholderContent={<ActivityIndicator animating={true} color={theme.colors.neutral.dark} size={40} />}
@@ -65,6 +69,7 @@ function Home(props) {
         onRefresh={onRefresh}
         extraData={selected_id}
         ListFooterComponent={<ListFooterComponent mode={'contain'} source={ImageData[1]} />}
+        ListFooterComponentStyle={style.ListFooterComponentStyle}
         />
         );
     }
@@ -104,7 +109,7 @@ function Home(props) {
 
     const wait = (timeout) => {
         return new Promise(resolve => {
-           resolve(_ONLAOD());
+           resolve(props.GetProducts());
         });
       }
     const onRefresh = React.useCallback(() => {
@@ -137,7 +142,7 @@ function Home(props) {
     else{
     return (
      <>
-     <View style={style.maincontainer}>
+     <SafeAreaView style={style.maincontainer}>
         <MFlatlist
         {...props}
         data={props.Products.List.slice(0,4)} 
@@ -149,7 +154,7 @@ function Home(props) {
         extraData={selected_id}
         ListFooterComponent={Top_Selling}
         />
-        </View>
+        </SafeAreaView>
      </>
     )
     }
@@ -166,12 +171,10 @@ export default connect(mapStateToProps,mapDipatchToprops)(Home);
 
 const style=StyleSheet.create({
     maincontainer:{
+        flex:1,
+        justifyContent:'center',
         backgroundColor:'#fff',
         padding:5,
-        width:'100%',
-        alignItems:'center',
-        height:'100%',
-        justifyContent:'flex-start'
     },
     containterone:{
         flex:1,
@@ -188,10 +191,8 @@ const style=StyleSheet.create({
         borderRadius:10,
         borderTopRightRadius:0,
     },ListHeadingView:{
-        flex:1,
-        flexDirection:'row',
-        flexWrap:'nowrap',
         width:'100%',
+        flexDirection:'row',
         justifyContent:'space-between',
         alignItems:'center'
     },
@@ -208,6 +209,10 @@ const style=StyleSheet.create({
         marginRight:10,
         ...theme.text.bodythree,
         color:theme.colors.primary
+    },ListFooterComponentStyle:{
+        flex:1,
+        alignItems:'center',
+        width:W_WIDTH,
     }
 
 })
