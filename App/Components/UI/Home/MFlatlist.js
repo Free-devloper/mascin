@@ -1,5 +1,5 @@
 import React from 'react'
-import {StyleSheet,View,FlatList,} from 'react-native';
+import {StyleSheet,View,FlatList,Text} from 'react-native';
 import { W_WIDTH } from '../NativeUI';
 function MFlatlist(props) {
     return (

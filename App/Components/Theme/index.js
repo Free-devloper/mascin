@@ -1,4 +1,5 @@
 import { DefaultTheme } from '@react-navigation/native';
+import { Platform } from 'react-native';
 export const theme={
     ...DefaultTheme,
     fonts:{
@@ -24,7 +25,10 @@ export const theme={
             lightpurple:'#BBAFFE',
             lightPink:'#F6BDAC',
             red:'#F35C56',
-            lightred:'#F5B888'
+            lightred:'#F5B888',
+            blue: Platform.OS=='ios'? '#147EFB' : '#00a2ed',
+            grey: Platform.OS=='ios'? "rgb(99, 99, 102)" : "rgb(72, 72, 74)",
+            light_grey: Platform.OS=='ios'? "rgb(174, 174, 178)" : "rgb(174, 174, 178)",
         }
     },
     text:{

@@ -5,6 +5,18 @@
     "name": "macsin",
     "slug": "macsin",
     "version": "1.0.0",
+    "android": {
+      "package": "com.macsin.macsin", 
+      "config": {
+      "googleMaps": { "apiKey": "AIzaSyCvnMFcLCXpsyVaZO1c9GFqc56N2qosIQ0" }   
+   }
+    },
+    "ios": {
+      "bundleIdentifier": "com.macsin.macsin",
+       "config": {
+      "googleMaps": { "apiKey":"AIzaSyCvnMFcLCXpsyVaZO1c9GFqc56N2qosIQ0" }   
+   }
+    },
     "assetBundlePatterns": [
       "**/*"
     ]

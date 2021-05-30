@@ -23,7 +23,7 @@ const BottomTabNavigation= createBottomTabNavigator();
 const HomeStack=(props)=>{
     return(
         <>
-        <StackNavigation.Navigator screenOptions={{header:HomeHeader}} initialRouteName={'Home'}>
+        <StackNavigation.Navigator initialRouteName={'Home'} headerMode="none">
             <StackNavigation.Screen name={"HomeScreen"} component={Home}/>
         </StackNavigation.Navigator>
         </>
@@ -45,7 +45,7 @@ const AuthStack=()=>{
 /* Bottom Tab Navigator */
 const Apptab=()=>{
     return(
-        <BottomTabNavigation.Navigator tabBarOptions={{style:{backgroundColor:'#fff',},tabStyle:{flex:1,justifyContent:'center',alignItems:'center',alignContent:'center'},activeTintColor:theme.colors.primary,}}> 
+        <BottomTabNavigation.Navigator initialRouteName={'Home'} tabBarOptions={{style:{backgroundColor:'#fff',},tabStyle:{flex:1,justifyContent:'center',alignItems:'center',alignContent:'center'},activeTintColor:theme.colors.primary,}}> 
             <BottomTabNavigation.Screen options={{tabBarLabel:'Home',tabBarIcon:({ color,size })=>(<Icon name={Platform.OS=='ios'?'ios-home':'md-home'} size={size} color={color}  />),}}   name='Home' component={HomeStack}/>
             <BottomTabNavigation.Screen options={{tabBarLabel:'Categories',tabBarIcon:({ color,size })=>(<Icon name={Platform.OS=='ios'?'ios-menu':'md-menu'} size={size} color={color} />)}} name='Categories' component={Categories} />
             <BottomTabNavigation.Screen options={{tabBarLabel:'Cart',tabBarIcon:({ color,size })=>(<Icon name={Platform.OS=='ios'?'ios-cart':'md-cart'} size={size} color={color}  />)}} name='Cart' component={Cart}/>
@@ -57,7 +57,8 @@ const Apptab=()=>{
 const AppStack=()=>{
     return(
         <StackNavigation.Navigator headerMode="none" >
-            <StackNavigation.Screen name='AppTab' component={Apptab} /> 
+            <StackNavigation.Screen name='Home' component={HomeStack} /> 
+            <StackNavigation.Screen name='Account' component={Account} /> 
         </StackNavigation.Navigator>
     )
 }
